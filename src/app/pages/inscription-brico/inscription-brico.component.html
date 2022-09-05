@@ -1,0 +1,131 @@
+<app-nav-bar2></app-nav-bar2>
+<app-header2></app-header2>
+<section class="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="card overflow-hidden mb-5">
+          <div class="row">
+            <div class="col-lg-7">
+              <form role="form" class="p-3" id="contact-form" method="POST">
+                <input type="hidden" name="_token" value="aHdnWA6ktH5OwxXcr8sC0MjWA2S1X32OetyEjRG0">
+                <div class="card-header px-4 py-sm-5 py-3">
+                  <h2>Bricolleur </h2>
+                  <p class="lead"> Crée votre profile </p>
+                </div>
+                <div class="card-body pt-1">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="nom" type="text" [(ngModel)]="Bricoleur.nom" name="nom">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Prénom" type="text" [(ngModel)]="Bricoleur.prenom" name="prenom">
+                      </mat-form-field>
+                    </div>
+                  </div>
+    
+                  <div class="row">
+    
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>CIN</mat-label>
+                        <input matInput placeholder="cin" type="text" [(ngModel)]="Bricoleur.cin">
+                      </mat-form-field>
+                    </div>
+    
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Ex. pat@example.com" type="email" [(ngModel)]="Bricoleur.email">
+                      </mat-form-field>
+                    </div>
+    
+    
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="password" type="password" required [(ngModel)]="Bricoleur.password"
+                          name="email">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="adresse" type="text" required [(ngModel)]="Bricoleur.adresse"
+                          name="adresse">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="tel" type="text" required [(ngModel)]="Bricoleur.tel" name="tel">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Experience" type="number" required
+                          [(ngModel)]="Bricoleur.anneexperience" name="anneexperience">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                      <div *ngIf="villes">
+                        <mat-form-field appearance="fill" class="select-width">
+                          <mat-label>Villes</mat-label>
+                          <mat-select [(ngModel)]="Bricoleur.id_ville">
+                            <mat-option *ngFor="let vle of villes" value="{{ vle.id }}">{{ vle.ville }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div *ngIf="category">
+                        <mat-form-field appearance="fill" class="select-width">
+                          <mat-label> Sous Service</mat-label>
+                          <mat-select [(ngModel)]="Bricoleur.id_sousServices">
+                            <mat-option *ngFor="let soss of category" value="{{ soss.id }}">{{ soss.nom }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label>Apropos</label>
+                      <mat-form-field class="example-full-width">
+                        <textarea matInput placeholder="Apropos......" required [(ngModel)]="Bricoleur.apropos"
+                          name="apropos"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="row">
+                    <div class="col-md-6 text-right ms-auto">
+                      <button (click)="saveBricoleur()" class="btn btn-round bg-gradient-info mb-0">Sauvegarder</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-5 position-relative bg-cover px-0"
+              style="background-image: url(assets/img/curved5.jpg);">
+              <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
+                <img src="assets/img/wave-1.svg" class="h-100 ms-n2">
+              </div>
+              <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                <div class="mask bg-gradient-info opacity-9"></div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer-app></app-footer-app>

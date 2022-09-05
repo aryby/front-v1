@@ -1,0 +1,187 @@
+<app-nav-bar2></app-nav-bar2>
+<!-- PASS BRICOLEUR A PARTIE DE LOGIN -->
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card overflow-hidden mb-5">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <form role="form">
+                                <div class="card-header px-4 py-sm-5 py-3">
+                                    <h2>Bricolleur </h2>
+                                    <p class="lead"> Crée votre profile </p>
+                                </div>
+                                <div class="card-body pt-1">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="nom" type="text"
+                                                    [(ngModel)]="bricoleur.nom" name="nom">
+                                            </mat-form-field>
+                                        </div>
+                                        
+                                        <div class="col-md-6" >
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Prénom" type="text"
+                                                    [(ngModel)]="bricoleur.prenom" name="prenom">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width" appearance="fill">
+                                                <mat-label>CIN</mat-label>
+                                                <input matInput placeholder="cin" type="text"
+                                                    [(ngModel)]="bricoleur.cin">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width" appearance="fill">
+                                                <mat-label>Email</mat-label>
+                                                <input matInput placeholder="Ex. pat@example.com" type="email"
+                                                    [(ngModel)]="bricoleur.email">
+                                            </mat-form-field>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="password" type="password" required
+                                                    [(ngModel)]="bricoleur.password" name="email">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="adresse" type="text" required
+                                                    [(ngModel)]="bricoleur.adresse" name="adresse">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="tel" type="text" required
+                                                    [(ngModel)]="bricoleur.tel" name="tel">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Experience" type="number" required
+                                                    [(ngModel)]="bricoleur.anneexperience" name="anneexperience">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div *ngIf="villes">
+                                                <mat-form-field appearance="fill" class="select-width">
+                                                    <mat-label>Villes</mat-label>
+                                                    <mat-select [(ngModel)]="bricoleur.id_ville">
+                                                        <mat-option *ngFor="let vle of villes" value="{{ vle.id }}">{{
+                                                            vle.ville }}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div *ngIf="category">
+                                                <mat-form-field appearance="fill" class="select-width">
+                                                    <mat-label> Sous Service</mat-label>
+                                                    <mat-select [(ngModel)]="bricoleur.id_sousServices">
+                                                        <mat-option *ngFor="let soss of category" value="{{ soss.id }}">
+                                                            {{ soss.nom }}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Apropos</label>
+                                            <mat-form-field class="example-full-width">
+                                                <textarea matInput placeholder="Apropos......" required
+                                                    [(ngModel)]="bricoleur.apropos" name="apropos"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-6 text-right ms-auto">
+                                            <button (click)="editBricoleur()"
+                                                class="btn btn-round bg-gradient-info mb-0">Sauvegarder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-md-4">
+                         
+                            <div class="wrapper" *ngIf="bricoleur">
+                                <div data-w-id="9a7e68c7-d46c-3acc-1554-11131100f758"
+                                    style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+                                    class="cta-card-wrapper">
+                                    <div class="cta-card-icon"><img
+                                            src="assets/img/profile.svg"
+                                            alt=""></div>
+                                    <div class="cta-card grade-1">
+                                        <div class="cta-card-info">
+                                            <h3>{{bricoleur.nom}} {{bricoleur.prenom}}</h3>
+                                            <p>{{bricoleur.apropos}} .&nbsp;</p><p
+                                                class="button white w-button">{{bricoleur.email}}</p>
+                                        </div>
+                                        <div class="cta-card-waves">
+                                            <div style="transform: translate3d(0px, 0px, 0px) scale3d(2, 2, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 0; transform-style: preserve-3d;"
+                                                class="circle-wave"></div>
+                                            <div class="circle-wave-1"></div>
+                                            <div class="circle-wave-2"></div>
+                                            <div class="circle-wave-3"></div>
+                                            <div class="circle-wave-4"></div>
+                                            <div class="circle-wave-5"></div>
+                                            <div class="circle-wave-6"></div>
+                                            <div class="circle-wave-7"></div>
+                                            <div class="circle-wave-8"></div>
+                                            <div class="circle-wave-9"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <hr>
+            <hr>
+            <div class="row " *ngIf="missions">
+                <div class="col-md-4" *ngFor="let mss of missions">
+                    <div class="card card-chart">
+                        <div class="card-body">
+                            <h4 class="card-title">{{mss.dateMission}}</h4>
+                            <p class="card-category">
+                                <span class="text-success"> {{mss.titre}} </span> {{mss.descriptions}}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">{{mss.serviceId}}</i> par : 
+                                <span *ngFor="let item of CLIENTS">
+                                    <span *ngIf="mss.clientId == item.id">
+                                        {{item.nom}}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer-app></app-footer-app>

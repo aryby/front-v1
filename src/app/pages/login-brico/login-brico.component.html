@@ -1,0 +1,71 @@
+<app-nav-bar2></app-nav-bar2>
+   
+<section class="m-10">
+    <div class="container">
+      <div class="row">
+        <div class="col mt-4">
+          <div class="card overflow-hidden mb-5">
+            <div class="row">
+              <div class="col-lg-7">
+                <form role="form" class="p-3" id="contact-form" method="POST">                      
+
+                        <div class="card-header text-center">
+                            <h4 class="mt-5">SE CONNECTER</h4>
+                        </div>
+                        
+                            <div *ngIf="messageEreurr" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Erreur</strong> {{messageEreurr}}.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>EMAIL</mat-label>
+                                        <input matInput placeholder="UserName" [(ngModel)]="loginBrico.email"
+                                            type="text">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Password input -->
+                                
+                                <div class="form-outline mb-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>MOT DE PASSE</mat-label>
+                                        <input matInput placeholder="password" [(ngModel)]="loginBrico.password"
+                                            type="password">
+                                    </mat-form-field>
+                                </div>
+                              
+                               
+                                
+                              
+                                <!-- Submit button -->
+                                <div class="col-md-12">
+                                    <button type="button" (click)="login()" class="btn bg-gradient-info btn-block mt-5 mb-2">Se connecter</button>
+                            
+                                </div>
+                              
+                            
+        
+            </form>
+        </div>  
+        <div class="col-lg-5 position-relative bg-cover px-0"
+        style="background-image: url(assets/img/curved5.jpg);">
+        <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
+          <img src="assets/img/wave-1.svg" class="h-100 ms-n2">
+        </div>
+        <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+          <div class="mask bg-gradient-info opacity-9"></div>
+
+        </div>
+      </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+<app-footer-app></app-footer-app>

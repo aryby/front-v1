@@ -1,0 +1,444 @@
+<app-nav-bar2></app-nav-bar2>
+<!-- End Navbar -->
+<style>
+    .page-header {
+        align-items: start;
+        padding-top: 180px;
+    }
+</style>
+<header class="bg-gradient-dark">
+    <div class="page-header section-height-75" style="background-image: url(assets/img/curved.jpg);">
+        <span class="mask bg-gradient-info opacity-8"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center mx-auto my-auto">
+                    <h4 class="text-white">BRICOLEURS</h4>
+                    <p class="lead mb-5 text-white opacity-8">
+
+                        plus de 1000 Bricoleur inscrits a notre environnement
+                        web
+                        <br> Demandes gratuitements .
+                        <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select *ngIf="list_services" (change)="onEmentId($event.target.value)">
+                                <option selected>SELECTIONNE SERVICE</option>
+                                <option *ngFor="let svc of list_services" value="{{svc.id}}">{{svc.nom}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <select (change)="onEmitAdresId($event.target.value)">
+                                <option selected>SELECTIONNER SOUS SERVICE</option>
+                                <option *ngFor="let sous_ of selected_list_sous_services"
+                                    value="{{sous_.id}}x{{sous_.adressId}}">
+                                    {{sous_.nom}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <select *ngIf="list_adresses" (change)="recherche($event.target.value)">
+                                <option selected>SELECT VILLE</option>
+                                <option *ngFor="let item of selected_list_adresses" value="{{item.id}}">{{item.ville}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1" />
+                </g>
+            </svg>
+        </div>
+    </div>
+</header>
+<!-- -------- END HEADER 7 w/ text and video ------- -->
+
+
+
+<section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+                <div class="row">
+                    <div class="col-md-4 position-relative">
+                        <div class="p-3 text-center">
+                            <h1 class="text-gradient text-primary"><span id="state1" countTo="70">1000</span>+
+                            </h1>
+                            <h5 class="mt-3">Bricoleur</h5>
+                            <p class="text-sm">
+                                plus de 1000 Bricoleur inscrits a notre environnement web</p>
+                        </div>
+                        <hr class="vertical dark">
+                    </div>
+                    <div class="col-md-4 position-relative">
+                        <div class="p-3 text-center">
+                            <h1 class="text-gradient text-primary"> <span id="state2" countTo="15">5400</span>+
+                            </h1>
+                            <h5 class="mt-3">Clients</h5>
+                            <p class="text-sm">
+                                Plus de 5400 Clients attents votre services
+                            </p>
+                        </div>
+                        <hr class="vertical dark">
+                        <hr class="vertical dark">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 text-center">
+                            <h1 class="text-gradient text-primary" id="state3" countTo="4">420</h1>
+                            <h5 class="mt-3">Mission</h5>
+                            <p class="text-sm">
+                                Chercher la Mission le plus proche a votre position
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<div class="container-fluid my-5 py-5" *ngIf="!BRICOLEURS">
+
+
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-lg-left dark-grey-text">
+
+        <h3 class="font-weight-bold">QUI SOMMES NOUS?</h3>
+
+        <p class="text-muted mb-5"><b>ALLO-BRICOLEUR,</b>
+            Aujourd'hui, avec l'avènement de la consommation collaborative,
+            il n'a jamais été aussi simple de se rendre service entre particuliers. En fait, si vous avez une petite
+            mission à déléguer,
+            faites tout simplement appel à vos voisins plutôt qu'à une grande enseigne spécialisée : bricolage, ménage,
+            jardinage ou même déménagement, de nombreux particuliers ont du temps à revendre et toutes les compétences
+            nécessaires pour venir à bout de votre corvée en un temps record et de manière efficace et professionnelle.
+        </p>
+        <div class="row">
+            <div class="col-lg-3 col-md-12 mb-lg-0 mb-4">
+
+                <img src="assets/img/nous.png" class="img-fluid" style="-webkit-transform: skew(0, 5deg);
+              border: 1px solid #BFBFBF;
+        background-color: white;
+        box-shadow: 10px 10px 5px #aaaaaa;" alt="">
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 mb-lg-0 mb-lg-0 mb-2">
+
+                <h4 class="h4">POURQUOI CHOISIR NOTRE SERVICES ?</h4>
+
+                <p class="text-muted">Le spécialiste des services à domicile en ligne.
+                    Réservez un prestataire pour tous les services du quotidien pour votre maison et votre famille.
+                    Plus simple, plus rapide, moins cher
+                    Libérez-vous de toutes les démarches administratives, choisissez et payez votre prestataire en ligne
+                    et au
+                    prix que vous souhaitez.</p>
+
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+
+                <a class="btn btn-outline-info btn-md waves-effect" href="#" role="button">POSTEZ VOTRE MISSION</a>
+                <a class="btn btn-info btn-md waves-effect waves-light" href="#" role="button">S'INSRIRE BRICOLEUR<i
+                        class="fa fa-magic ml-1" aria-hidden="true"></i></a>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+<div class="container-fluid my-5 py-5" *ngIf="!BRICOLEURS">
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-lg-left dark-grey-text ">
+        <div class=" bg-gradient-info position-relative border-radius-md overflow-hidden px-md-5 "
+            style="padding: 30px;">
+
+            <div class="row">
+                <h2 class="text-center text-white"> <b>Pour vous apporter une meilleure expérience</b> </h2>
+
+                <div class="content content6use text-white">
+                    <p>Pourquoi ce partenariat ? Pour vous proposer le meilleur service de bricolage entre particulier !
+                    </p>
+
+                    <p>Allo bricoleur est le meilleur annuaire pour trouver des particuliers autour de chez vous qui
+                        vous aideront avec votre besoin de bricolage.</p>
+
+                    <p>Allo bricoleur possède un algorithme de matching qui vous propose seulement les meilleurs
+                        bricoleurs lorsque vous postez une annonce.</p>
+
+                </div>
+            </div>
+
+            <div class="row dark-grey-text bold">
+                <div class="content content6use text-white">
+                    <h4 class="text-white"><b> 7 raisons de faire une demande de bricolage sur Allo bricoleur</b></h4>
+                    <ul class="list2">
+                        <li>Postez votre annonce gratuitement</li>
+                        <li>Des dizaines de milliers de bricoleurs particuliers et professionnels</li>
+                        <li>Tous les profils sont vérifiés à la main et notés par la communautés Allo bricoleur</li>
+                        <li>Votre service de bricolage est assuré et encadré</li>
+                        <li>Vous ne perdez pas de temps, votre annonce n’est envoyée qu’aux bricoleurs compétents</li>
+                        <li>Votre bricoleur n’est payé qu’une fois la prestation réalisée</li>
+                        <li>Déposez une annonce gratuitement chez notre partenaire Allo bricoleur et multipliez vos
+                            chances de trouver le bricoleur parfait pour vous.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="action">
+                <a class="btn btn-lg bg-gradient-info rounded-circle-box" rel="sponsored"
+                    [routerLink]="inscription">Découvrez Bricoleur</a>
+            </div>
+        </div>
+    </section>
+</div>
+<!--  -->
+<div class="container-fluid my-5 py-5" *ngIf="!BRICOLEURS">
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-lg-left dark-grey-text">
+        <div class="main-wrapper" *ngIf="!BRICOLEURS">
+
+            <!-- Start Remarkable Wroks Area -->
+            <section class="remarkable-area">
+                <div class="container-fluid">
+                    <div class="row" *ngIf="all_missions">
+
+                        <div class="col-lg-4 col-md-4" *ngFor="let miss of all_missions">
+                            <div class="info-horizontal bg-gradient-info border-radius-xl p-2">
+
+                                <div class="product-card">
+                                    <div class="badge">{{miss.serviceId}} service</div>
+                                    <div class="product-details">
+                                        <span class="product-catagory text-center">{{miss.dateMission}} </span>
+                                        <h4><a href="">{{miss.client_id}} nom - {{miss.client_id}} prenom</a></h4>
+                                        <p>{{miss.descriptions}}</p>
+                                        <div class="product-bottom-details">
+                                            <div class="product-price">{{miss.titre}} </div>
+                                            <div class="product-links">
+                                                <a href=""><i class="fa fa-heart"></i></a>
+                                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gradient-info border-radius-md">
+                <div class="container ">
+                    <div class="content" style="padding: 30px; margin: 40px; ">
+                        <h3 class="text-white text-center "><b>Devenez Bricoco</b></h3>
+                        <h2 class="text-white text-center"><strong class="bold text-primary"><b> Passionné ou
+                                    professionnel,</b></strong><br>
+                            rejoignez le réseau Bricoco et arrondissez vos fins de mois</h2>
+
+                        <div class="row text-white centreVerticalement">
+                            <div class="item col-md-4 ">
+                                <div class="picture ">
+                                    <img src="assets/img/incentive-profil-complet.png" alt="pattern-lines">
+                                </div>
+                                <p>
+                                    Complétez votre profil bricoco en quelques clics, fixez un tarif à l’heure
+                                </p>
+                            </div>
+                            <div class="item col-md-4 ">
+                                <div class="picture">
+                                    <img src="assets/img/incentive-mission.png" alt="pattern-lines">
+                                </div>
+                                <p>
+                                    Un particulier proche de chez vous vous contacte pour une mission
+                                </p>
+                            </div>
+                            <div class="item col-md-4 ">
+                                <div class="picture">
+                                    <img src="assets/img/incentive-tache-accomplie.png" alt="pattern-lines">
+                                </div>
+                                <p>
+                                    Une fois la tâche accomplie, vous êtes payé en direct !
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="action2">
+                            <a class="btn btn-large bg-gradient-info rounded-circle-box" href="/register"
+                                data-gtag="open-register-tobeworker" onclick="event.preventDefault();"
+                                data-remodal-target="register">Je m'inscris</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- bricoleur -->
+            <section class="remarkable-area">
+                <div class="container-fluid">
+                    <div class="row" *ngIf="bricos">
+                        <div class="col-md-4" *ngFor="let brico of bricos">
+                                <div class="wrapper2">
+                                    <div data-w-id="9a7e68c7-d46c-3acc-1554-11131100f758"
+                                        style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+                                        class="cta-card-wrapper">
+                                        <div class="cta-card-icon"><img
+                                                src="assets/img/profile.svg"
+                                                alt=""></div>
+                                        <div class="cta-card grade-1" style="width: 100%;">
+                                            <div class="cta-card-info">
+                                                <h6>
+                                                    <span *ngFor="let sous of list_sous_services">
+                                                        <span class="badge bg-gradient-info"
+                                                            *ngIf="sous.id == brico.id_sousServices">
+                                                            {{sous.nom}}</span>
+                                                    </span>
+                                                </h6>
+        
+                                                <h6>
+                                                    <span *ngFor="let adres of list_adresses">
+                                                        <span class="badge bg-gradient-info" *ngIf="adres.id == brico.id_ville">
+                                                            {{adres.ville}}</span>
+                                                    </span>
+        
+                                                </h6>
+                                                <h3>{{brico.nom}} {{brico.prenom}}</h3>
+                                                <h6>{{brico.adresse}}</h6>
+                                                <h6>{{brico.tel}}</h6>
+                                                <h6>{{brico.email}}</h6>
+                                                       <p>{{brico.apropos}}.&nbsp;</p><a
+                                                     href="mailto:{{brico.email}}" class="btn btn-md bg-gradient-dark">E-mail me</a>
+                                            </div>
+                                            <div class="cta-card-waves">
+                                                <div style="transform: translate3d(0px, 0px, 0px) scale3d(2, 2, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 0; transform-style: preserve-3d;"
+                                                    class="circle-wave"></div>
+                                                <div class="circle-wave-1"></div>
+                                                <div class="circle-wave-2"></div>
+                                                <div class="circle-wave-3"></div>
+                                                <div class="circle-wave-4"></div>
+                                                <div class="circle-wave-5"></div>
+                                                <div class="circle-wave-6"></div>
+                                                <div class="circle-wave-7"></div>
+                                                <div class="circle-wave-8"></div>
+                                                <div class="circle-wave-9"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+<section class="remarkable-area" *ngIf="BRICOLEURS">
+    <div class="container mx-auto mt-4 ">
+        <div class="row " *ngIf="BRICOLEURS">
+            <div class="col-md-4" *ngFor="let brico of BRICOLEURS">
+
+                <div class="wrapper2" style="width: 100%;">
+                    <div data-w-id="9a7e68c7-d46c-3acc-1554-11131100f758"
+                        style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+                        class="cta-card-wrapper" style="width: 100%;">
+                        <div class="cta-card-icon"><img src="assets/img/profile.svg" alt=""></div>
+                        <div class="cta-card grade-1" style="width: 100%;">
+                            <div class="cta-card-info">
+                                <h6>
+                                    <span *ngFor="let sous of list_sous_services">
+                                        <span class="badge bg-gradient-info" *ngIf="sous.id == brico.id_sousServices">
+                                            {{sous.nom}}</span>
+                                    </span>
+                                </h6>
+                                <h6>
+                                    <span *ngFor="let adres of list_adresses">
+                                        <span class="badge bg-gradient-info" *ngIf="adres.id == brico.id_ville">
+                                            {{adres.ville}}</span>
+                                    </span>
+                                </h6>
+                                <h3>{{brico.nom}} {{brico.prenom}}</h3>
+                                <h6>{{brico.adresse}}</h6>
+                                <h6>{{brico.tel}}</h6>
+                                <h6>{{brico.email}}</h6>
+                                <p>{{brico.apropos}} .&nbsp;
+                                </p>
+                                <a href="mailto:{{brico.email}}" class="btn btn-md bg-gradient-dark">MESSAGE ME
+                                </a>
+                            </div>
+                            <div class="cta-card-waves">
+                                <div style="transform: translate3d(0px, 0px, 0px) scale3d(2, 2, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 0; transform-style: preserve-3d;"
+                                    class="circle-wave"></div>
+                                <div class="circle-wave-1"></div>
+                                <div class="circle-wave-2"></div>
+                                <div class="circle-wave-3"></div>
+                                <div class="circle-wave-4"></div>
+                                <div class="circle-wave-5"></div>
+                                <div class="circle-wave-6"></div>
+                                <div class="circle-wave-7"></div>
+                                <div class="circle-wave-8"></div>
+                                <div class="circle-wave-9"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- <div class="courses-container">
+                    <div class="course">
+                        <div class="course-info">
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                            <h6>
+                                <span *ngFor="let sous of list_sous_services">
+                                    <span class="badge bg-gradient-info" *ngIf="sous.id == brico.id_sousServices">
+                                        {{sous.nom}}</span>
+                                </span>
+                            </h6>
+                            <h6>
+                                <span *ngFor="let adres of list_adresses">
+                                    <span class="badge bg-gradient-info" *ngIf="adres.id == brico.id_ville">
+                                        {{adres.ville}}</span>
+                                </span>
+                            </h6>
+                            <h3>{{brico.nom}} {{brico.prenom}}</h3>
+                            <h6>{{brico.adresse}}</h6>
+                            <h6>{{brico.tel}}</h6>
+                            <h6>{{brico.email}}</h6>
+                            <h6>{{brico.apropos}}</h6>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer-app></app-footer-app>

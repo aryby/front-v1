@@ -1,0 +1,185 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- start service -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Service</h4>
+            <p class="card-category">Crée votre Service</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="nom" type="text"  [(ngModel)]="Service.nom" name="nom">
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button (click)="saveService()" class="btn btn-danger pull-right">Crée Profile</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End service -->
+
+      <!-- start sous service  -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Sous Service</h4>
+            <p class="card-category">Crée votre Sous Service</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="nom" type="text"  [(ngModel)]="SousService.nom" name="nom">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div *ngIf="villes">
+                    <mat-form-field appearance="fill" class="select-width">
+                      <mat-label>Villes</mat-label>
+                      <mat-select [(ngModel)]="SousService.adressId">
+                        <mat-option *ngFor="let vle of villes" value="{{ vle.id }}">{{ vle.ville }}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div *ngIf="Services">
+                    <mat-form-field appearance="fill" class="select-width">
+                      <mat-label>Service</mat-label>
+                      <mat-select [(ngModel)]="SousService.serviceId">
+                        <mat-option *ngFor="let svc of Services" value="{{ svc.id }}">{{ svc.nom }}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <button mat-raised-button (click)="saveSousService()" class="btn btn-primary pull-right">Crée
+                Profile</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End service -->
+    </div>
+  </div>
+
+  <!-- start table service -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Services Table</h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive" *ngIf="Services">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Nom
+                  </th>
+                  <th>
+                    Action
+                  </th>
+
+                </thead>
+                <tbody *ngFor="let serv of Services">
+                  <tr>
+                    <td>
+                      {{ serv.nom }}
+                    </td>
+                    <td class="td-actions text-right">
+                      <button (click)="showService(serv)" mat-raised-button type="button" matTooltip="Edit Task"
+                        [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button (click)="deleteService(serv.id)" mat-raised-button type="button" matTooltip="Remove"
+                        [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End table service -->
+
+      <!-- start table sous service -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Sous Services Table</h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive" *ngIf="SousServices">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Nom
+                  </th>
+                  <th>
+                    Service
+                  </th>
+                  <th>
+                    Adresse
+                  </th>
+                  <th>
+                    Action
+                  </th>
+                </thead>
+                <tbody *ngFor="let sous_service of SousServices">
+                  <tr>
+                    <td>
+                      {{ sous_service.nom }}
+                    </td>
+                    <td>
+                      <span *ngFor="let sous of Services">
+                        <p *ngIf="sous.id == sous_service.serviceId"> {{sous.nom}}</p>
+                      </span>
+                    </td>
+                    <td>
+                      <span *ngFor="let vle of villes">
+                        <p *ngIf="vle.id == sous_service.adressId"> {{vle.ville}}</p>
+                      </span>
+                      <!-- adress[id] -->
+                    </td>
+                    <td class="td-actions text-right">
+                      <button (click)="showSousServices(sous_service)" mat-raised-button type="button"
+                        matTooltip="Edit Task" [matTooltipPosition]="'above'"
+                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button (click)="deleteSousServices(sous_service.id)" mat-raised-button type="button"
+                        matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End table sous service -->
+    </div>
+  </div>
+</div>

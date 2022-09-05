@@ -1,0 +1,187 @@
+<app-nav-bar2></app-nav-bar2>
+
+
+<!-- End Navbar -->
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-50" style="background-image: url(assets/img/curved.jpg);">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center mx-auto my-auto">
+          <h3 class="text-white">Demande Service</h3>
+        </div>
+      </div>
+    </div>
+    <div class="position-absolute w-100 z-index-1 bottom-0">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="moving-waves">
+          <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+          <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+          <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+          <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+<!-- -------- END HEADER 7 w/ text and video ------- -->
+
+
+<section class="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="card overflow-hidden mb-5">
+          <div class="row">
+            <div class="col-lg-7">
+              <form role="form" class="p-3" id="contact-form" method="POST">
+                <input type="hidden" name="_token" value="aHdnWA6ktH5OwxXcr8sC0MjWA2S1X32OetyEjRG0">
+                <div class="card-header px-4 py-sm-5 py-3">
+                  <h2>Demande Service </h2>
+                  <p class="lead">Crée votre Mission</p>
+                </div>
+                <div class="card-body pt-1">
+                  <div class="row">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="nom" type="text" [(ngModel)]="Client.nom" name="nom">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Prénom" type="text" [(ngModel)]="Client.prenom" name="prenom">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="email" type="email" [(ngModel)]="Client.email" name="email">
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-md-6">
+
+                        <div *ngIf="villes">
+
+                          <mat-form-field appearance="fill" class="select-width">
+                            <mat-label>Ville</mat-label>
+                            <mat-select [(ngModel)]="Client.id_ville">
+                              <mat-option *ngFor="let vle of villes" value="{{ vle.id }}">{{ vle.ville }}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="row">
+                    <div class="col-md-6 text-right ms-auto">
+                      <button (click)="saveClient()" class="btn btn-round bg-gradient-info mb-0">Suivant</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-5 position-relative bg-cover px-0"
+              style="background-image: url(assets/img/curved5.jpg);">
+              <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
+                <img src="assets/img/wave-1.svg" class="h-100 ms-n2">
+              </div>
+              <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                <div class="mask bg-gradient-info opacity-9"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="">
+  <div class="container-fluid" *ngIf="obs_client">
+    <div class="row">
+      <div class="col">
+        <div class="card overflow-hidden mb-5">
+          <div class="row">
+            <div class="col-lg-7">
+              <form role="form" class="p-3" id="contact-form" method="POST">
+                <input type="hidden" name="_token" value="aHdnWA6ktH5OwxXcr8sC0MjWA2S1X32OetyEjRG0">
+                <div class="card-header px-4 py-sm-5 py-3">
+                  <h2>Mission </h2>
+                  <p class="lead"> Crée votre mission</p>
+                </div>
+                <div class="card-body pt-1">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="titre" type="text" [(ngModel)]="Mission.titre" name="titre">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="dateMission" type="date" [(ngModel)]="Mission.dateMission"
+                          name="dateMission">
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="descriptions" type="text" [(ngModel)]="Mission.descriptions"
+                          name="descriptions">
+                      </mat-form-field>
+                    </div>
+                    <input type="hidden" value="{{Mission.clientId}}" [(ngModel)]="Mission.clientId">
+                    <div class="col-md-6">
+                      <div *ngIf="category">
+                        <mat-form-field appearance="fill" class="select-width">
+                          <mat-label>Service</mat-label>
+                          <mat-select [(ngModel)]="Mission.serviceId">
+                            <mat-option *ngFor="let soss of category" value="{{ soss.id }}">{{ soss.nom }}-{{ soss.id }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="clearfix"></div>
+                  <div class="row">
+                    <div class="col-md-6 text-right ms-auto">
+                      <button (click)="saveMission(obs_client.id)"
+                        class="btn btn-round bg-gradient-info mb-0">Sauvegarder</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-5 position-relative bg-cover px-0"
+              style="background-image: url(assets/img/curved5.jpg);">
+              <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
+                <img src="assets/img/wave-1.svg" class="h-100 ms-n2">
+              </div>
+              <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                <div class="mask bg-gradient-info opacity-9"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer-app></app-footer-app>
